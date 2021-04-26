@@ -1,0 +1,42 @@
+.center {
+  height: 100vh;
+
+  .logo {
+    float: left;
+    // width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    color: #fff;
+    font-size: 20px;
+    line-height: 31px;
+
+    img {
+      width: 31px;
+      height: 31px;
+      margin-right: 10px;
+    }
+  }
+
+  .user {
+    float: right;
+    width: 120px;
+    height: 31px;
+    margin: 16px 0;
+    color: #fff;
+    // background: rgba(255, 255, 255, 0.3);
+    line-height: 31px;
+    text-align: right;
+  }
+
+  .siteLayoutBackground {
+    background: #fff;
+  }
+
+  :global {
+    .ant-layout-content {
+      min-height: 280px;
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+  }
+}

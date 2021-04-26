@@ -1,0 +1,77 @@
+{
+  "private": true,
+  "name": "start",
+  "version": "0.0.1",
+  "description": "User defined project configuration on the web page to generate UMI project scaffolding.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon platforms/node/serve",
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:main\" \"npm run start\"",
+    "build": "concurrently \"npm run build:renderer\" \"npm run build:main\"",
+    "dev:main": "rollup -c -w",
+    "dev:renderer": "alita dev",
+    "build:main": "rollup -c",
+    "build:renderer": "alita build",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:prettier": "prettier --check \"**/*\" --end-of-line auto",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umijs/start.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/umijs/start/issues"
+  },
+  "authors": [
+    "xiaohuoni <448627663@qq.com> (https://github.com/xiaohuoni)",
+    "chenshuai2144 <qixian.cs@outlook.com> (https://github.com/chenshuai2144)"
+  ],
+  "homepage": "https://github.com/umijs/start#readme",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "alita": "2.8.2-beta.1"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.0",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.11",
+    "@types/http-errors": "^1.8.0",
+    "@types/morgan": "^1.9.2",
+    "@types/yeoman-generator": "^4.11.3",
+    "@umijs/fabric": "2.5.7",
+    "chalk": "^4.1.0",
+    "concurrently": "^6.0.1",
+    "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.23.0",
+    "express": "^4.17.1",
+    "iconutil": "^1.0.2",
+    "lint-staged": "^10.5.4",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "rollup": "^2.44.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "stylelint": "^13.12.0",
+    "yorkie": "^2.0.0"
+  }
+}
