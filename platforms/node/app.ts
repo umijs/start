@@ -7,7 +7,16 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import indexRouter from "./routes/index";
 import helloRouter from "./routes/hello";
+import { download } from "./tools/download";
+import { tempPath } from "./constant";
 
+const projectPath = path.join(process.cwd(), tempPath, "h5");
+// 随手写的测试
+download({
+  gitUrl: "https://github.com/alitajs/next-alita-app",
+  pathUrl: "",
+  projectPath,
+});
 const app = express();
 app.use(compression());
 
