@@ -27,8 +27,7 @@ $ yarn build
 
 ## Deploy
 
-只需要 `platforms/node/lib`、`platforms/node/www`、`platforms/node/serve`。
-启动 `platforms/node/serve` 服务即可。默认使用 `3033` 端口号，可以通过环境变量修改。
+只需要 `platforms/node/lib`、`platforms/node/www`、`platforms/node/serve`。启动 `platforms/node/serve` 服务即可。默认使用 `3033` 端口号，可以通过环境变量修改。
 
 ## Tip
 

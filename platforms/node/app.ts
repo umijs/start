@@ -7,16 +7,11 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import indexRouter from "./routes/index";
 import helloRouter from "./routes/hello";
-import { download } from "./tools/download";
-import { tempPath } from "./constant";
+import tempsListData from "./routes/tempsListData";
+import run from "./tools/run";
 
-const projectPath = path.join(process.cwd(), tempPath, "h5");
-// 随手写的测试
-download({
-  gitUrl: "https://github.com/alitajs/next-alita-app",
-  pathUrl: "",
-  projectPath,
-});
+//TODO: 这个执行时机还要在考虑下
+run();
 const app = express();
 app.use(compression());
 
@@ -26,13 +21,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "..", "www")));
-console.log(path.join(__dirname, "..", "www"));
 app.use("/", indexRouter);
 app.use("/api/hello", helloRouter);
+app.use("/api/tempsListData", tempsListData);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  console.log(req);
   next(createError(404));
 });
 

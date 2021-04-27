@@ -35,7 +35,7 @@ function globList(patternList: any[], options: any) {
   return fileList;
 }
 
-const filterPkg = (pkgObject: Object, ignoreList: any[]) => {
+const filterPkg = (pkgObject: Object = {}, ignoreList: any[] = []) => {
   const devObj = {};
   Object.keys(pkgObject).forEach((key) => {
     const isIgnore = ignoreList.some((reg) => {
@@ -49,15 +49,18 @@ const filterPkg = (pkgObject: Object, ignoreList: any[]) => {
   return devObj;
 };
 
-export async function download({
-  projectPath,
-  gitUrl,
-  pathUrl,
-}: {
-  projectPath: string;
-  gitUrl: string;
-  pathUrl: string;
-}) {
+export async function download(
+  base: string,
+  temp: {
+    type: string;
+    name: string;
+    url: string;
+    path: string;
+  }
+) {
+  const { url: gitUrl, path: pathUrl, name, type } = temp;
+  const projectPath = path.join(base, type, name);
+
   const root = path.resolve(projectPath);
   rimraf.sync(projectPath);
 
@@ -77,7 +80,7 @@ export async function download({
         `"${gitUrl}"`
       )}. Only GitHub repositories are supported. Please use a GitHub URL and try again.`
     );
-    process.exit(1);
+    return;
   }
   let repoInfo = await getRepoInfo(repoUrl, pathUrl);
 
@@ -123,7 +126,7 @@ export async function download({
       devDependencies: filterPkg(pkg.devDependencies, ignoreDependencies),
     };
     // remove create-umi config
-    delete projectPkg["create-umi"];
+    // delete projectPkg["create-umi"];
     fs.writeFileSync(
       path.resolve(projectPath, "package.json"),
       // 删除一个包之后 json会多了一些空行。sortPackage 可以删除掉并且排序
@@ -146,4 +149,5 @@ export async function download({
     });
     console.log(`Download ${gitUrl} Success!`);
   }
+  return { ...pkg, temp };
 }
