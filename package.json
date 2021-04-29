@@ -49,6 +49,10 @@
     ]
   },
   "dependencies": {
+    "@ant-design/pro-card": "^1.11.12",
+    "@ant-design/pro-form": "^1.22.0",
+    "@ant-design/pro-layout": "^6.17.1",
+    "@ant-design/pro-provider": "^1.4.12",
     "alita": "2.8.2-beta.1"
   },
   "devDependencies": {
