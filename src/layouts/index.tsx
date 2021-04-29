@@ -1,15 +1,9 @@
-import React from "react";
-import type { FC } from "react";
-import BlankLayout from "./BlankLayout";
-import BasicLayout from "./BasicLayout";
+import React from 'react';
+import type { FC } from 'react';
+import { IRouteComponentProps } from 'alita';
+import BasicLayout from './BasicLayout';
 
-const MenuLayout: FC = (props) => {
-  const { location } = props;
-  const { pathname } = location;
-  const hasLayout = pathname === "/";
-  if (!hasLayout) {
-    return <BlankLayout {...props} />;
-  }
+const MenuLayout: FC<IRouteComponentProps> = (props) => {
   return <BasicLayout {...props} />;
 };
 

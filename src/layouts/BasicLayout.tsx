@@ -1,7 +1,7 @@
 import React, { useRef, useContext, useState } from 'react';
 import type { FC } from 'react';
 import ProLayout, { DefaultFooter, PageContainer } from '@ant-design/pro-layout';
-import { Link, history } from 'alita';
+import { Link, history, IRouteComponentProps } from 'alita';
 import { Input, Space, Tag } from 'antd';
 import { Menu } from 'antd';
 import ProCard from '@ant-design/pro-card';
@@ -48,7 +48,7 @@ const TagList: React.FC<{
   );
 };
 
-const BasicLayout: FC<{}> = ({ children, ...rest }) => {
+const BasicLayout: FC<IRouteComponentProps> = ({ children, ...rest }) => {
   const values = useContext(ProProvider);
   return (
     <ProLayout
@@ -76,18 +76,20 @@ const BasicLayout: FC<{}> = ({ children, ...rest }) => {
         <ProCard split="vertical">
           <ProCard
             bodyStyle={{
-              paddingRight: 0,
+              padding: '16px 0',
             }}
             title="项目类型"
             colSpan="300px"
           >
             <Menu
+              onClick={(e) => history.push(e.key as string)}
+              selectedKeys={[rest.location.pathname]}
               style={{
                 width: '100%',
                 height: '100%',
               }}
             >
-              <Menu.Item>
+              <Menu.Item key="/umi">
                 <img
                   style={{
                     width: '16px',
@@ -106,7 +108,7 @@ const BasicLayout: FC<{}> = ({ children, ...rest }) => {
                   Umi
                 </span>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item key="/pro">
                 <img
                   style={{
                     width: '16px',
