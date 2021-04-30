@@ -4,6 +4,6 @@ export async function query(): Promise<any> {
   return request("/api/hello");
 }
 
-export async function getTempsListData(): Promise<any> {
-  return request("/api/tempsListData", { method: "GET" });
+export async function generate(data: any): Promise<any> {
+  return request("/api/generate", { data });
 }

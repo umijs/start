@@ -52,14 +52,13 @@ const filterPkg = (pkgObject: Object = {}, ignoreList: any[] = []) => {
 export async function download(
   base: string,
   temp: {
-    type: string;
     name: string;
     url: string;
     path: string;
   }
 ) {
-  const { url: gitUrl, path: pathUrl, name, type } = temp;
-  const projectPath = path.join(base, type, name);
+  const { url: gitUrl, path: pathUrl, name } = temp;
+  const projectPath = path.join(base, name);
 
   const root = path.resolve(projectPath);
   rimraf.sync(projectPath);

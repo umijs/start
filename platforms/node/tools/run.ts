@@ -26,15 +26,15 @@ export default async () => {
   // 1. 下载模版或者检测更新
 
   // 2.获取清单数据 放到上面的循环中了，可以少执行读取
-  // 3.将 tempsListData 保存为文件？或者有什么方式存为全局数据
-  const targetPath = path.join(root, "tempsListData.json");
-  mkdirp.sync(path.dirname(targetPath));
-  writeFileSync(
-    targetPath,
-    // 删除一个包之后 json会多了一些空行。sortPackage 可以删除掉并且排序
-    // prettier 会容忍一个空行
-    JSON.stringify({ data: tempsListData }),
-    "utf-8"
-  );
-  console.log(`Write file ${targetPath} Success!`);
+  // 3.将 tempsListData 保存为文件？或者有什么方式存为全局数据，现不错动态表单，这些逻辑没用处，先注释了
+  // const targetPath = path.join(root, "tempsListData.json");
+  // mkdirp.sync(path.dirname(targetPath));
+  // writeFileSync(
+  //   targetPath,
+  //   // 删除一个包之后 json会多了一些空行。sortPackage 可以删除掉并且排序
+  //   // prettier 会容忍一个空行
+  //   JSON.stringify({ data: tempsListData }),
+  //   "utf-8"
+  // );
+  // console.log(`Write file ${targetPath} Success!`);
 };

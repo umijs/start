@@ -20,3 +20,4 @@ platforms/node/www
 platforms/node/lib/**
 /out
 .temp-cache
+.pkg-cache

@@ -7,7 +7,8 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import indexRouter from "./routes/index";
 import helloRouter from "./routes/hello";
-import tempsListData from "./routes/tempsListData";
+import downloadRouter from "./routes/download";
+import generateRouter from "./routes/generate";
 import run from "./tools/run";
 
 //TODO: 这个执行时机还要在考虑下
@@ -23,7 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "..", "www")));
 app.use("/", indexRouter);
 app.use("/api/hello", helloRouter);
-app.use("/api/tempsListData", tempsListData);
+app.use("/api/download", downloadRouter);
+app.use("/api/generate", generateRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -41,5 +43,8 @@ const errHandler: ErrorRequestHandler = (err, req, res, next) => {
 };
 // error handler
 app.use(errHandler);
+console.log(
+  "首次执行之后，请注释 platforms/node/app.ts#L5 这行代码，这个执行时机还没考虑清楚，首次执行之后，请注释 platforms/node/app.ts#L5 这行代码，这个执行时机还没考虑清楚，首次执行之后，请注释 platforms/node/app.ts#L5 这行代码，这个执行时机还没考虑清楚"
+);
 
 module.exports = app;
