@@ -1,11 +1,14 @@
-import React, { useRef, useContext, useState } from 'react';
-import type { FC } from 'react';
-import ProLayout, { DefaultFooter, PageContainer } from '@ant-design/pro-layout';
-import { Link, history, IRouteComponentProps } from 'alita';
-import { Input, Space, Tag } from 'antd';
-import { Menu } from 'antd';
-import ProCard from '@ant-design/pro-card';
-import ProProvider from '@ant-design/pro-provider';
+import React, { useRef, useContext, useState } from "react";
+import type { FC } from "react";
+import ProLayout, {
+  DefaultFooter,
+  PageContainer,
+} from "@ant-design/pro-layout";
+import { Link, history, IRouteComponentProps } from "alita";
+import { Input, Space, Tag } from "antd";
+import { Menu } from "antd";
+import ProCard from "@ant-design/pro-card";
+import ProProvider from "@ant-design/pro-provider";
 
 const TagList: React.FC<{
   value?: string[];
@@ -13,7 +16,7 @@ const TagList: React.FC<{
 }> = ({ value, onChange }) => {
   const ref = useRef<Input | null>(null);
   const [newTags, setNewTags] = useState<string[]>([]);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -21,12 +24,15 @@ const TagList: React.FC<{
 
   const handleInputConfirm = () => {
     let tempsTags = [...(value || [])];
-    if (inputValue && tempsTags.filter((tag) => tag === inputValue).length === 0) {
+    if (
+      inputValue &&
+      tempsTags.filter((tag) => tag === inputValue).length === 0
+    ) {
       tempsTags = [...tempsTags, inputValue];
     }
     onChange?.(tempsTags);
     setNewTags([]);
-    setInputValue('');
+    setInputValue("");
   };
 
   return (
@@ -52,7 +58,7 @@ const BasicLayout: FC<IRouteComponentProps> = ({ children, ...rest }) => {
   const values = useContext(ProProvider);
   return (
     <ProLayout
-      logo="https://gw.alipayobjects.com/zos/antfincdn/bWi%26ZHzXn9/wheat.svg"
+      logo="https://gw.alipayobjects.com/zos/antfincdn/XklrnZsKC%24/bianzu%2525202.svg"
       title="Start"
       layout="top"
       navTheme="light"
@@ -60,7 +66,7 @@ const BasicLayout: FC<IRouteComponentProps> = ({ children, ...rest }) => {
       contentWidth="Fluid"
       footerRender={() => <DefaultFooter />}
       {...rest}
-      onMenuHeaderClick={() => history.push('/')}
+      onMenuHeaderClick={() => history.push("/")}
       menuItemRender={(menuItemProps, defaultDom) => {
         if (
           menuItemProps.isUrl ||
@@ -76,7 +82,7 @@ const BasicLayout: FC<IRouteComponentProps> = ({ children, ...rest }) => {
         <ProCard split="vertical">
           <ProCard
             bodyStyle={{
-              padding: '16px 0',
+              padding: "16px 0",
             }}
             title="项目类型"
             colSpan="300px"
@@ -85,24 +91,24 @@ const BasicLayout: FC<IRouteComponentProps> = ({ children, ...rest }) => {
               onClick={(e) => history.push(e.key as string)}
               selectedKeys={[rest.location.pathname]}
               style={{
-                width: '100%',
-                height: '100%',
+                width: "100%",
+                height: "100%",
               }}
             >
               <Menu.Item key="/umi">
                 <img
                   style={{
-                    width: '16px',
-                    display: 'inline-flex',
-                    height: '16px',
-                    verticalAlign: 'middle',
+                    width: "16px",
+                    display: "inline-flex",
+                    height: "16px",
+                    verticalAlign: "middle",
                     marginRight: 8,
                   }}
                   src="https://img.alicdn.com/tfs/TB1zomHwxv1gK0jSZFFXXb0sXXa-200-200.png"
                 />
                 <span
                   style={{
-                    display: 'inline-flex',
+                    display: "inline-flex",
                   }}
                 >
                   Umi
@@ -111,17 +117,17 @@ const BasicLayout: FC<IRouteComponentProps> = ({ children, ...rest }) => {
               <Menu.Item key="/pro">
                 <img
                   style={{
-                    width: '16px',
-                    height: '16px',
-                    verticalAlign: 'middle',
-                    display: 'inline-flex',
+                    width: "16px",
+                    height: "16px",
+                    verticalAlign: "middle",
+                    display: "inline-flex",
                     marginRight: 8,
                   }}
                   src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
                 />
                 <span
                   style={{
-                    display: 'inline-flex',
+                    display: "inline-flex",
                   }}
                 >
                   Ant Design Pro
@@ -144,7 +150,9 @@ const BasicLayout: FC<IRouteComponentProps> = ({ children, ...rest }) => {
                         </>
                       );
                     },
-                    renderFormItem: (text, props) => <TagList {...props} {...props?.fieldProps} />,
+                    renderFormItem: (text, props) => (
+                      <TagList {...props} {...props?.fieldProps} />
+                    ),
                   },
                 },
               }}
