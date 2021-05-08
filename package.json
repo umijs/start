@@ -95,6 +95,7 @@
     "got": "10.7.0",
     "iconutil": "^1.0.2",
     "lint-staged": "^10.5.4",
+    "load-examples": "^1.0.1",
     "morgan": "^1.10.0",
     "mustache": "^4.2.0",
     "nodemon": "^2.0.7",

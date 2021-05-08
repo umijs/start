@@ -1,7 +1,7 @@
 import path from "path";
 import { writeFileSync } from "fs-extra";
 import { mkdirp } from "@umijs/utils";
-import { download } from "../tools/download";
+import download from "load-examples";
 import { tempPath, tempsList } from "../constant";
 
 export default async () => {
