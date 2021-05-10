@@ -3,6 +3,7 @@ import { join, resolve } from "path";
 import { existsSync, writeFileSync } from "fs-extra";
 import prettier from "prettier";
 import sortPackage from "sort-package-json";
+import getUmiConfig from "../helpers/getUmiConfig";
 
 type Arguments<T = {}> = T & {
   config: any;
@@ -57,5 +58,8 @@ export default class StartGenerator extends Generator {
     // 情况1 模版项目中 存在 config/config.ts.tpl 文件，即表示配置修改由模版提供者自己管理，在上面的 copyDirectory 中已经处理了这个逻辑
 
     // TODO:情况2 没有 tpl 文件，手动修改
+    const useConfig = getUmiConfig(target);
+    console.log(useConfig);
+    // error
   }
 }

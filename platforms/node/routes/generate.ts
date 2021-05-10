@@ -69,7 +69,14 @@ router.post("/", async (req, res, next) => {
       message: "success",
     });
   } catch (error) {
-    res.json({ code: 500, message: "服务端出错了！" });
+    console.log(error);
+    res.json({
+      code: 500,
+      data: {
+        success: false,
+      },
+      message: "服务端出错了！",
+    });
   }
 });
 
