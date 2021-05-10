@@ -28,6 +28,9 @@ export default class StartGenerator extends Generator {
       path,
       target,
     });
+    const useConfig = getUmiConfig(target);
+    console.log(useConfig);
+    // error
     const packageJsonPath = resolve(target, "package.json");
     if (!existsSync(packageJsonPath)) {
       console.log(`${packageJsonPath} is no find`);
@@ -58,8 +61,5 @@ export default class StartGenerator extends Generator {
     // 情况1 模版项目中 存在 config/config.ts.tpl 文件，即表示配置修改由模版提供者自己管理，在上面的 copyDirectory 中已经处理了这个逻辑
 
     // TODO:情况2 没有 tpl 文件，手动修改
-    const useConfig = getUmiConfig(target);
-    console.log(useConfig);
-    // error
   }
 }
