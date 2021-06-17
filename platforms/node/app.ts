@@ -44,7 +44,7 @@ const errHandler: ErrorRequestHandler = (err, req, res, next) => {
 // error handler
 app.use(errHandler);
 console.log(
-  "首次执行之后，请注释 platforms/node/app.ts#L5 这行代码，这个执行时机还没考虑清楚，首次执行之后，请注释 platforms/node/app.ts#L5 这行代码，这个执行时机还没考虑清楚，首次执行之后，请注释 platforms/node/app.ts#L5 这行代码，这个执行时机还没考虑清楚"
+  "首次执行之后，请注释 platforms/node/app.ts#L15 这行代码，这个执行时机还没考虑清楚，首次执行之后，请注释 platforms/node/app.ts#L15 这行代码，这个执行时机还没考虑清楚，首次执行之后，请注释 platforms/node/app.ts#L15 这行代码，这个执行时机还没考虑清楚"
 );
 
 module.exports = app;
